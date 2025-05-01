@@ -1,0 +1,186 @@
+=== Game State Log - ===
+Population: 98 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log - Thu May  1 21:35:25 2025
+ ===
+Population: 105 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log - Thu May  1 21:35:33 2025
+ ===
+Population: 105 | Healthy: 200
+Army Size: 155 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log - Thu May  1 21:35:48 2025
+ ===
+Population: 105 | Healthy: 200
+Army Size: 155 | Morale: 50%
+Tax Rate: 32% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log - Thu May  1 21:35:52 2025
+ ===
+Population: 105 | Healthy: 200
+Army Size: 155 | Morale: 50%
+Tax Rate: 32% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log - Thu May  1 21:35:55 2025
+ ===
+Population: 105 | Healthy: 200
+Army Size: 155 | Morale: 50%
+Tax Rate: 32% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log - Thu May  1 21:35:57 2025
+ ===
+Population: 105 | Healthy: 200
+Army Size: 155 | Morale: 50%
+Tax Rate: 32% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  ===
+Population: 88 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  ===
+Population: 88 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  ===
+Population: 88 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  ===
+Population: 88 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  ===
+Population: 88 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  === 
+Population: 100 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  === 
+Population: 100 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  === 
+Population: 100 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  === 
+Population: 100 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  === 
+Population: 100 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
+=== Game State Log -  === 
+Population: 100 | Healthy: 200
+Army Size: 50 | Morale: 50%
+Tax Rate: 20% | Inflation: 0%
+Treasury: $1000
+Resources:
+- Food: 200
+- Wood: 150
+- Stone: 100
+---------------------------------------------
