@@ -65,7 +65,6 @@ void loadGame(Population& pop, Army& army, Economy& econ,
     in.close();
 }
 int main() {
-    srand(static_cast<unsigned int>(time(nullptr)));
 
     Population pop;
     Army army;
