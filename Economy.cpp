@@ -3,7 +3,7 @@
 using namespace std;
 
 Economy::Economy() : taxRate(10) {}
-
+ 
 void Economy::manage(ResourceManager& rm, Peasant& peasant, Merchant& merchant, Noble& noble, int playerId) {
     int choice;
     cout << "\n===== Economy Management =====\n";
