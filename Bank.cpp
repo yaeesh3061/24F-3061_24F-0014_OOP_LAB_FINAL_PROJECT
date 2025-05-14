@@ -5,7 +5,7 @@ Bank::Bank(float initial) : treasury(initial), loansGiven(0.0f) {}
 
 void Bank::deposit(float amount) {
     treasury += amount;
-    cout << "\nAmount deposited: $" << amount;
+    cout << "\nAmount deposited: $" << amount;    
     cout << "\nTreasure: " << treasury;
 }
 
