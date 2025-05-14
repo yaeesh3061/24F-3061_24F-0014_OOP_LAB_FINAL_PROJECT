@@ -1,49 +1,81 @@
-// Resource.cpp
 #include "Stronghold.h"
+#include <iostream>
+using namespace std;
 
-Resource::Resource(){}
-Resource::Resource(const string& n, float initial) : name(n), stockpile(initial), consumptionRate(5.0f) {}
-
-void Resource::gather(float amount) {
-    stockpile += amount;
-    cout << "\nGathered " << amount << " units of " << name << "\nTotal: " << stockpile << endl;
-}
-
-bool Resource::consume(float amount) {
-    if (stockpile >= amount) {
-        stockpile -= amount;
-        cout << "Consumed " << amount << " units of " << name << ". Remaining: " << stockpile << endl;
-        return true;
+ResourceManager::ResourceManager() {
+    resourceCount = 5;
+    resourceNames[0] = "Food";
+    resourceNames[1] = "Wood";
+    resourceNames[2] = "Stone";
+    resourceNames[3] = "Iron";
+    resourceNames[4] = "Gold";
+    for (int i = 0; i < resourceCount; i++) {
+        resourceValues[i] = 100;
     }
-    cout << "Not enough " << name << " to consume " << amount << ". Available: " << stockpile << endl;
-    return false;
 }
 
-void Resource::setConsumption(float rate) {
-    consumptionRate = rate;
+void ResourceManager::gather(string resource, int amount, int playerId) {
+    int index = findResourceIndex(resource);
+    if (index != -1) {
+        resourceValues[index] += amount;
+        cout << "Player " << playerId << " gathered " << amount << " " << resource << ".\n";
+    }
+    else {
+        throw GameException("Resource not found: " + resource);
+    }
 }
 
-float Resource::getStockpile() const {
-    return stockpile;
+void ResourceManager::consume(string resource, int amount, int playerId) {
+    int index = findResourceIndex(resource);
+    if (index != -1) {
+        if (resourceValues[index] >= amount) {
+            resourceValues[index] -= amount;
+            cout << "Player " << playerId << " consumed " << amount << " " << resource << ".\n";
+        }
+        else {
+            throw GameException("Not enough " + resource + ". Available: " + to_string(resourceValues[index]));
+        }
+    }
+    else {
+        throw GameException("Resource not found: " + resource);
+    }
 }
 
-void Resource::printStatus() const {
-    cout << name << ": " << stockpile << " units" << endl;
+void ResourceManager::trade(string from, string to, int rate) {
+    int fromIndex = findResourceIndex(from);
+    int toIndex = findResourceIndex(to);
+    if (fromIndex != -1 && toIndex != -1) {
+        if (resourceValues[fromIndex] >= rate) {
+            resourceValues[fromIndex] -= rate;
+            resourceValues[toIndex] += rate;
+            cout << "Traded " << rate << " " << from << " for " << to << ".\n";
+        }
+        else {
+            throw GameException("Not enough " + from + ". Available: " + to_string(resourceValues[fromIndex]));
+        }
+    }
+    else {
+        throw GameException("One or both resources not found.");
+    }
 }
 
-void Resource::saveToFile(ofstream& out) const {
-    out << name << "\n";
-    out << stockpile << "\n";
-    out << consumptionRate << "\n";
+void ResourceManager::display() const {
+    cout << "Resource Status:\n";
+    for (int i = 0; i < resourceCount; i++) {
+        cout << i + 1 << ". " << resourceNames[i] << ": " << resourceValues[i] << "\n";
+    }
 }
 
-void Resource::loadFromFile(ifstream& in) {
-    string line;
-    getline(in, name);
-    getline(in, line); stockpile = stof(line);
-    getline(in, line); consumptionRate = stof(line);
+bool ResourceManager::hasResource(const string& name, int amount) {
+    int index = findResourceIndex(name);
+    return (index != -1 && resourceValues[index] >= amount);
 }
 
-string Resource::getName() const {
-    return name;
+int ResourceManager::findResourceIndex(const string& name) const {
+    for (int i = 0; i < resourceCount; i++) {
+        if (resourceNames[i] == name) {
+            return i;
+        }
+    }
+    return -1;
 }
