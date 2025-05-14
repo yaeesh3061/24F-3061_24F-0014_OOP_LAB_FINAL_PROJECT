@@ -1,5 +1,5 @@
 // Population.cpp
-#include "Stronghold.h"
+#include "Stronghold.h"  
 
 Population::Population(int initial) : total(initial), employed(0), healthy(initial) {}
 
