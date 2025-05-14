@@ -1,64 +1,79 @@
-// Bank.cpp
 #include "Stronghold.h"
+#include <iostream>
+using namespace std;
 
-Bank::Bank(float initial) : treasury(initial), loansGiven(0.0f) {}
+Bank::Bank() : loan(0) {}
 
-void Bank::deposit(float amount) {
-    treasury += amount;
-    cout << "\nAmount deposited: $" << amount;    
-    cout << "\nTreasure: " << treasury;
+void Bank::menu(ResourceManager& rm, int playerId) {
+    int choice;
+    cout << "\n===== Bank Menu =====\n";
+    cout << "Current loan: " << loan << " gold\n";
+    cout << "1. Take Loan\n";
+    cout << "2. Repay Loan\n";
+    cout << "3. Back to Main Menu\n";
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+    case 1: {
+        int amt;
+        cout << "Enter loan amount: ";
+        cin >> amt;
+        if (amt > 0) {
+            rm.gather("Gold", amt, playerId);
+            loan += amt;
+            int interest = amt / 10; // 10% interest
+            loan += interest;
+            cout << "Loan taken: " << amt << " gold with " << interest << " gold interest.\n";
+            cout << "Total debt: " << loan << " gold\n";
+        }
+        else {
+            cout << "Invalid amount. Must be positive.\n";
+        }
+        break;
+    }
+    case 2: {
+        int repay;
+        cout << "Enter repay amount (max " << loan << "): ";
+        cin >> repay;
+        if (repay <= 0) {
+            cout << "Invalid amount. Must be positive.\n";
+            break;
+        }
+        if (repay > loan) {
+            cout << "Amount exceeds your loan. Maximum payment possible: " << loan << endl;
+            repay = loan;
+        }
+        if (rm.hasResource("Gold", repay)) {
+            rm.consume("Gold", repay, playerId);
+            loan -= repay;
+            cout << "Paid " << repay << " gold. Remaining debt: " << loan << " gold\n";
+        }
+        else {
+            cout << "Not enough gold to repay. Check your treasury.\n";
+        }
+        break;
+    }
+    case 3:
+        cout << "Returning to main menu.\n";
+        break;
+    default:
+        cout << "Invalid option.\n";
+    }
 }
 
-bool Bank::withdraw(float amount) {
-    if (amount <= treasury) {
-        treasury -= amount;
-        cout << "\n" << amount << " withdrawn from .";
-        cout << "\nTreasure: " << treasury;
-        return true;
+void Bank::display() const {
+    cout << "Bank Status:\n";
+    cout << "  Current loan: " << loan << " gold\n";
+    if (loan > 0) {
+        cout << "  Interest accruing at 10% rate.\n";
     }
     else {
-        cout << "\nFailed. Not enough funds.";
-        return false;
+        cout << "  No current debt.\n";
     }
 }
 
-void Bank::giveLoan(float amount) {
-    if (amount < treasury) {
-        treasury -= amount;
-        loansGiven += amount;
-        cout << "\nIssued loan of amount " << amount;
-        cout << "\nLoans outstanding: " << loansGiven;
-    }
-    else {
-        cout << "\nFailed.Not enough funds to give loan.";
-    }
-}
-
-void Bank::collectInterest(float rate) {
-    float interest = loansGiven * rate;
-    treasury += interest;
-    cout << "Collected $" << interest << " in interest.\nTreasury: $" << treasury << endl;
-}
-
-void Bank::audit() {
-    cout << "Audit Report.\nTreasury = $" << treasury << "\nLoans Outstanding = $" << loansGiven << endl;
-}
-
-float Bank::getTreasury() const {
-    return treasury;
-}   
-
-void Bank::printStatus() const {
-    cout << "\nTreasury: $" << treasury << " | Loans Outstanding: $" << loansGiven << endl;
-}
-
-void Bank::saveToFile(ofstream& out) const {
-    out << treasury << "\n";
-    out << loansGiven << "\n";
-}
-
-void Bank::loadFromFile(ifstream& in) {
-    string line;
-    getline(in, line); treasury = stof(line);
-    getline(in, line); loansGiven = stof(line);
+void Bank::setLoan(int newLoan) {
+    loan = newLoan;
+    if (loan < 0) loan = 0;
 }
