@@ -1,24 +1,12 @@
-100
-100
-90
-50
-50
-0
-20
-0
-0
-Lord Aragon
-1
-70
-1000
-0
-3
-Food
-200
-5
-Wood
-150
-5
-Stone
-100
-5
+POPULATION 15
+ARMY 15 102
+BANK 0
+LEADER dawood 60
+ECONOMY 50
+SOCIAL_CLASSES 0 0 40
+RESOURCES 5
+Food 90
+Wood 100
+Stone 100
+Iron 100
+Gold 115
