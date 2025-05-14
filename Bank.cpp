@@ -1,6 +1,6 @@
 #include "Stronghold.h"
 #include <iostream>
-using namespace std;
+using namespace std; 
 
 Bank::Bank() : loan(0) {}
 
