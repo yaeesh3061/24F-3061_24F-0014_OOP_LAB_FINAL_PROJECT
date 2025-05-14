@@ -1,7 +1,7 @@
 #include "Stronghold.h"
 #include <iostream>
 using namespace std;
-
+ 
 Army::Army() : soldiers(10), morale(100) {}
 
 void Army::train(ResourceManager& rm, int playerID) {
