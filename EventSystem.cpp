@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-
+ 
 void EventManager::trigger(ResourceManager& rm, Population& pop, Army& army,
     Peasant& peasant, Merchant& merchant, Noble& noble, int playerId) {
     cout << "\n===== Random Event Triggered =====\n";
