@@ -1,86 +1,70 @@
-// Army.cpp
 #include "Stronghold.h"
+#include <iostream>
+using namespace std;
 
-Army::Army(int size) : soldiers(size), morale(50.0f), payArrears(0.0f) {}
+Army::Army() : soldiers(10), morale(100) {}
 
-void Army::recruit(int count, const Population& pop) {
-    int unemployed = pop.getUnemployed();
-    if (count > unemployed) count = unemployed;
-    soldiers += count;
-    cout << "\n" << count << " soldiers recruited.";
-    cout << "\nTotal army size: " << soldiers;
-}
-
-void Army::dismiss(int count) {
-    if (count > soldiers) count = soldiers;
-    soldiers -= count;
-    cout << "\n" << count << " soldiers dismissed from army.";
-    cout << "\nTotal army size: " << soldiers;
-}
-
-void Army::train() {
-    if (rand() % 2 == 0)
-        morale += 5.0f;
-    else
-        morale -= 2.0f;
-    if (morale > 100) morale = 100;
-    cout << "\nArmy trained.";
-    cout << "\nMorale: " << morale;
-}
-
-void Army::paySoldiers(float treasury) {
-    float needed = soldiers * 0.5f;
-    if (treasury >= needed) {
-        payArrears = 0;
+void Army::train(ResourceManager& rm, int playerID) {
+    int foodCost = 10;
+    int goldCost = 5;
+    if (rm.hasResource("Food", foodCost) && rm.hasResource("Gold", goldCost)) {
+        rm.consume("Food", foodCost, playerID); 
+        rm.consume("Gold", goldCost, playerID);
+        soldiers += 5;
         morale += 2;
-        cout << "\nSoldiers paid. Morale increased";
+        cout << "Trained 5 soldiers. Current strength: " << soldiers << ". Morale increased to " << morale << ".\n";
     }
     else {
-        payArrears += needed - treasury;
-        morale -= 3;
-        cout << "\nSoldiers unpaid. Morale dropped.";
+        cout << "Not enough resources to train. Required: " << foodCost << " Food and " << goldCost << " Gold.\n";
     }
+}
+
+void Army::pay(ResourceManager& rm, int playerID) {
+    int payment = soldiers * 2;
+    if (rm.hasResource("Gold", payment)) {
+        rm.consume("Gold", payment, playerID);
+        morale += 5;
+        if (morale > 100) morale = 100;
+        cout << "Army paid " << payment << " gold. Morale boosted to " << morale << ".\n";
+    }
+    else {
+        cout << "Insufficient gold (" << payment << " needed). Morale decreased!\n";
+        morale -= 10;
+        if (morale < 0) morale = 0;
+        cout << "New morale: " << morale << endl;
+    }
+}
+
+void Army::display() const {
+    cout << "Army Status:\n";
+    cout << "  Soldiers: " << soldiers << endl;
+    cout << "  Morale: " << morale << "%" << endl;
+    cout << "  Army strength: ";
+    if (morale > 80) {
+        cout << "Excellent";
+    }
+    else if (morale > 60) {
+        cout << "Good";
+    }
+    else if (morale > 40) {
+        cout << "Average";
+    }
+    else if (morale > 20) {
+        cout << "Poor";
+    }
+    else {
+        cout << "Critical - desertion risk!";
+    }
+    cout << endl;
+}
+
+void Army::setSoldiers(int newSoldiers) {
+    soldiers = newSoldiers;
+    if (soldiers < 0) soldiers = 0;
+}
+
+void Army::setMorale(int newMorale) {
+    morale = newMorale;
     if (morale < 0) morale = 0;
-}
-
-float Army::getPayOwed() const {
-    return soldiers * 0.5f;
-}
-
-int Army::getSize() const {
-    return soldiers;
-}
-
-void Army::updateMorale(float change) {
-    morale += change;
     if (morale > 100) morale = 100;
-    if (morale < 0) morale = 0;
-    cout << "\nMorale updated by " << change << "%.\nNew Morale: " << morale << "%";
-}
-
-void Army::printStatus() const {
-    cout << "\nArmy Size: " << soldiers << " | Morale: " << morale << "%"
-        << " | Pay Arrears: $" << payArrears << endl;
-}
-
-void Army::saveToFile(ofstream& out) const {
-    out << soldiers << "\n";
-    out << morale << "\n";
-    out << payArrears << "\n";
-}
-
-void Army::loadFromFile(ifstream& in) {
-    string line;
-    getline(in, line); soldiers = stoi(line);
-    getline(in, line); morale = stof(line);
-    getline(in, line); payArrears = stof(line);
-}
-float Army::getMorale() const {
-    return morale;
-}
-
-void Army::shrink(int count) {
-    if (count > soldiers) count = soldiers;
-    soldiers -= count;
-    cout << "\nArmy shrinked.";
 }
