@@ -1,5 +1,5 @@
 === Game State Log - ===
-Population: 98 | Healthy: 200
+Population: 98 | Healthy: 200 
 Army Size: 50 | Morale: 50%
 Tax Rate: 20% | Inflation: 0%
 Treasury: $1000
