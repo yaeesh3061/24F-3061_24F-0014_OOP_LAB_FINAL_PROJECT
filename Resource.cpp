@@ -1,7 +1,7 @@
 #include "Stronghold.h"
 #include <iostream>
 using namespace std;
-
+ 
 ResourceManager::ResourceManager() {
     resourceCount = 5;
     resourceNames[0] = "Food";
