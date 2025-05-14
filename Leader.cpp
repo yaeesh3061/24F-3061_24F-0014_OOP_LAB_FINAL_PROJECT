@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-
+ 
 Leader::Leader() : name("Default Leader"), popularity(50) {}
 
 void Leader::menu(Population& pop, Army& army) {
