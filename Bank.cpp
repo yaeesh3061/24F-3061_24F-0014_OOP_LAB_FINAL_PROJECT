@@ -46,7 +46,7 @@ void Bank::audit() {
 
 float Bank::getTreasury() const {
     return treasury;
-}
+}   
 
 void Bank::printStatus() const {
     cout << "\nTreasury: $" << treasury << " | Loans Outstanding: $" << loansGiven << endl;
